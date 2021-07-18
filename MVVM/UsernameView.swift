@@ -8,61 +8,31 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    typealias SetupClosure = (UIView) -> Void
-    func build(_ setupClosure: SetupClosure) {
-        translatesAutoresizingMaskIntoConstraints = false
-        setupClosure(self)
-    }
-    
-    @discardableResult
-    func addToAndBuild(
-        inParentView parent:UIView,
-        _ setupClosure: SetupClosure) -> UIView
-    {
-        parent.addSubview(self)
-        translatesAutoresizingMaskIntoConstraints = false
-        setupClosure(self)
-        return self
-    }
-    
-    @discardableResult
-    func customize(_ setupClosure: SetupClosure) -> UIView {
-        setupClosure(self)
-        return self
-    }
-}
-
-struct UsernameViewModel {
-    private(set) var userNameBinding: Bindable<String?>
-    
-    init(withDefaultUserName defaultUserName: String) {
-        userNameBinding = Bindable(defaultUserName)
-        
-        userNameBinding.onValueChange = {
-            print("\(String(describing: $0))")
-        }
-    }
-}
-
 final class UsernameView: UIView {
-    /// Value changed closure
-    typealias OnUsernameInputChange = (String?) -> Void
     
     private let viewModel: UsernameViewModel
-    private let userNameTextField = UITextField(frame: .zero)
     
-    private let userNameBind: Bindable<String?>
+    private let userNameTextField   = UITextField(frame: .zero)
+    private let userNameLabel       = UILabel(frame: .zero)
     
-    init(
-        withViewModel viewmodel: UsernameViewModel
-    ) {
+    
+    init(withViewModel viewmodel: UsernameViewModel) {
         self.viewModel = viewmodel
-        self.userNameBind = viewmodel.userNameBinding
         super.init(frame: .zero)
         build {
             buildView()
             $0.backgroundColor = .white
+        }
+        /// Setup the binding
+        userNameTextField.addTarget(
+            self,
+            action: #selector(valueChanged),
+            for: .editingChanged
+        )
+        /// Perform incoming binding
+        viewmodel.infoLabelValid.onValueChange = { [weak self] newValue in
+            guard let uNewValue = newValue else { return }
+            self?.userNameTextField.backgroundColor = uNewValue ? .green : .red
         }
     }
     
@@ -73,7 +43,7 @@ final class UsernameView: UIView {
 
 extension UsernameView {
     private func buildView() {
-        userNameTextField.addToAndBuild(inParentView: self) {
+        userNameLabel.addToAndBuild(inParentView: self) {
             NSLayoutConstraint.activate([
                 $0.topAnchor
                     .constraint(
@@ -94,20 +64,37 @@ extension UsernameView {
                 $0.heightAnchor
                     .constraint(equalToConstant: 44)
             ])
-        }.customize {
-            $0.backgroundColor = .red
         }
-        /// Setup the binding
-        userNameTextField.addTarget(
-            self,
-            action: #selector(valueChanged),
-            for: .editingChanged
-        )
+        userNameLabel.text = viewModel.infoLabelBinding.value
+        
+        userNameTextField.addToAndBuild(inParentView: self) {
+            NSLayoutConstraint.activate([
+                $0.topAnchor
+                    .constraint(
+                        equalTo: userNameLabel.bottomAnchor,
+                        constant: 8
+                    ),
+                $0.leadingAnchor
+                    .constraint(
+                        equalTo: safeAreaLayoutGuide.leadingAnchor,
+                        constant: directionalLayoutMargins.leading
+                    ),
+                safeAreaLayoutGuide
+                    .trailingAnchor
+                    .constraint(
+                        equalTo: $0.trailingAnchor,
+                        constant: directionalLayoutMargins.trailing
+                    ),
+                $0.heightAnchor
+                    .constraint(equalToConstant: 44)
+            ])
+        }
+        userNameTextField.backgroundColor = .red
     }
 }
 
 extension UsernameView {
     @objc func valueChanged() {
-        userNameBind.bindingChanged(to: userNameTextField.text)
+        viewModel.userNameBinding.bindingChanged(to: userNameTextField.text)
     }
 }

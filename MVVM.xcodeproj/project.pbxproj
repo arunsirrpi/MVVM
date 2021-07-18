@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFBE3A2226A3EC08001B348B /* UsernameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */; };
+		BFBE3A2426A3EC7B001B348B /* UIView+Create+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */; };
 		BFC4ACED26A30C5600796FF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4ACEC26A30C5600796FF9 /* AppDelegate.swift */; };
 		BFC4ACEF26A30C5600796FF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4ACEE26A30C5600796FF9 /* SceneDelegate.swift */; };
 		BFC4ACF126A30C5600796FF9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4ACF026A30C5600796FF9 /* HomeViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewModel.swift; sourceTree = "<group>"; };
+		BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Create+Extensions.swift"; sourceTree = "<group>"; };
 		BFC4ACE926A30C5600796FF9 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFC4ACEC26A30C5600796FF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFC4ACEE26A30C5600796FF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				BFC4AD1A26A315EE00796FF9 /* User.swift */,
 				BFC4AD1C26A316B500796FF9 /* UsernameView.swift */,
 				BFC4AD1E26A3205900796FF9 /* Bindable.swift */,
+				BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */,
+				BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
@@ -263,6 +269,8 @@
 				BFC4AD1B26A315EE00796FF9 /* User.swift in Sources */,
 				BFC4ACF126A30C5600796FF9 /* HomeViewController.swift in Sources */,
 				BFC4AD1F26A3205900796FF9 /* Bindable.swift in Sources */,
+				BFBE3A2226A3EC08001B348B /* UsernameViewModel.swift in Sources */,
+				BFBE3A2426A3EC7B001B348B /* UIView+Create+Extensions.swift in Sources */,
 				BFC4AD1D26A316B500796FF9 /* UsernameView.swift in Sources */,
 				BFC4ACED26A30C5600796FF9 /* AppDelegate.swift in Sources */,
 				BFC4ACEF26A30C5600796FF9 /* SceneDelegate.swift in Sources */,

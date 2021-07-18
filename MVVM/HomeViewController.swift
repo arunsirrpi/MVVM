@@ -17,6 +17,7 @@ struct HomeViewModel {
 class HomeViewController: UIViewController {
     
     private let viewModel: HomeViewModel
+    private var userNameViewModel: UsernameViewModel
     
     required init?(coder: NSCoder) {
         fatalError("XIB Not supported")
@@ -28,12 +29,16 @@ class HomeViewController: UIViewController {
      */
     init(withViewModel viewModel: HomeViewModel) {
         self.viewModel = viewModel
+        userNameViewModel = UsernameViewModel(
+            withDefaultUserName: "Arun Sirrpi",
+            infoLabelName: "Enter the user name:"
+        )
         super.init(nibName: nil, bundle: nil)
     }
     
     override func loadView() {
         view = UsernameView(
-            withViewModel: UsernameViewModel(withDefaultUserName: "Arun Sirrpi")
+            withViewModel: userNameViewModel
         )
     }
 
