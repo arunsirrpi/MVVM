@@ -82,6 +82,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF2CCDDB26A7E5B000DCF60B /* MVVM with Manual Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				BF2CCDDD26A7E5D900DCF60B /* ViewController */,
+				BF2CCDDE26A7E5E100DCF60B /* View */,
+				BF2CCDDF26A7E5EB00DCF60B /* View Model */,
+				BF2CCDE026A7E5F400DCF60B /* Model */,
+				BFC4AD1E26A3205900796FF9 /* Bindable.swift */,
+			);
+			path = "MVVM with Manual Bindings";
+			sourceTree = "<group>";
+		};
+		BF2CCDDC26A7E5CC00DCF60B /* UIView Create Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */,
+			);
+			path = "UIView Create Extensions";
+			sourceTree = "<group>";
+		};
+		BF2CCDDD26A7E5D900DCF60B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BFC4ACF026A30C5600796FF9 /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BF2CCDDE26A7E5E100DCF60B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFC4AD1C26A316B500796FF9 /* UsernameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF2CCDDF26A7E5EB00DCF60B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		BF2CCDE026A7E5F400DCF60B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFC4AD1A26A315EE00796FF9 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BFC4ACE026A30C5600796FF9 = {
 			isa = PBXGroup;
 			children = (
@@ -107,15 +159,11 @@
 			children = (
 				BFC4ACEC26A30C5600796FF9 /* AppDelegate.swift */,
 				BFC4ACEE26A30C5600796FF9 /* SceneDelegate.swift */,
-				BFC4ACF026A30C5600796FF9 /* HomeViewController.swift */,
+				BF2CCDDC26A7E5CC00DCF60B /* UIView Create Extensions */,
+				BF2CCDDB26A7E5B000DCF60B /* MVVM with Manual Bindings */,
 				BFC4ACF526A30C5700796FF9 /* Assets.xcassets */,
 				BFC4ACF726A30C5700796FF9 /* LaunchScreen.storyboard */,
 				BFC4ACFA26A30C5700796FF9 /* Info.plist */,
-				BFC4AD1A26A315EE00796FF9 /* User.swift */,
-				BFC4AD1C26A316B500796FF9 /* UsernameView.swift */,
-				BFC4AD1E26A3205900796FF9 /* Bindable.swift */,
-				BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */,
-				BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */,
 			);
 			path = MVVM;
 			sourceTree = "<group>";
