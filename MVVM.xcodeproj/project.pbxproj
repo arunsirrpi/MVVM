@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF2CCDE326A7E99400DCF60B /* BookSearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2CCDE226A7E99400DCF60B /* BookSearchHomeViewController.swift */; };
+		BF2CCDE826A7E9C200DCF60B /* BooksSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2CCDE726A7E9C200DCF60B /* BooksSearchViewModel.swift */; };
+		BF2CCDEC26A81DED00DCF60B /* BookSearchTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2CCDEB26A81DED00DCF60B /* BookSearchTestViewModel.swift */; };
+		BF2CCDEF26A81E7800DCF60B /* BookSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2CCDEE26A81E7800DCF60B /* BookSearchView.swift */; };
 		BFBE3A2226A3EC08001B348B /* UsernameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */; };
 		BFBE3A2426A3EC7B001B348B /* UIView+Create+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */; };
 		BFC4ACED26A30C5600796FF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC4ACEC26A30C5600796FF9 /* AppDelegate.swift */; };
@@ -39,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF2CCDE226A7E99400DCF60B /* BookSearchHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchHomeViewController.swift; sourceTree = "<group>"; };
+		BF2CCDE726A7E9C200DCF60B /* BooksSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksSearchViewModel.swift; sourceTree = "<group>"; };
+		BF2CCDEB26A81DED00DCF60B /* BookSearchTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchTestViewModel.swift; sourceTree = "<group>"; };
+		BF2CCDEE26A81E7800DCF60B /* BookSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchView.swift; sourceTree = "<group>"; };
 		BFBE3A2126A3EC08001B348B /* UsernameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewModel.swift; sourceTree = "<group>"; };
 		BFBE3A2326A3EC7B001B348B /* UIView+Create+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Create+Extensions.swift"; sourceTree = "<group>"; };
 		BFC4ACE926A30C5600796FF9 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +142,48 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BF2CCDE126A7E96400DCF60B /* Books Lookup App */ = {
+			isa = PBXGroup;
+			children = (
+				BF2CCDE526A7E9A700DCF60B /* Presentation Layer */,
+			);
+			path = "Books Lookup App";
+			sourceTree = "<group>";
+		};
+		BF2CCDE426A7E99800DCF60B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF2CCDE226A7E99400DCF60B /* BookSearchHomeViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		BF2CCDE526A7E9A700DCF60B /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				BF2CCDE626A7E9B200DCF60B /* View Model */,
+				BF2CCDE426A7E99800DCF60B /* View Controller */,
+				BF2CCDF026A81E7C00DCF60B /* View */,
+			);
+			path = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		BF2CCDE626A7E9B200DCF60B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF2CCDE726A7E9C200DCF60B /* BooksSearchViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		BF2CCDF026A81E7C00DCF60B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF2CCDEE26A81E7800DCF60B /* BookSearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		BFC4ACE026A30C5600796FF9 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +209,7 @@
 			children = (
 				BFC4ACEC26A30C5600796FF9 /* AppDelegate.swift */,
 				BFC4ACEE26A30C5600796FF9 /* SceneDelegate.swift */,
+				BF2CCDE126A7E96400DCF60B /* Books Lookup App */,
 				BF2CCDDC26A7E5CC00DCF60B /* UIView Create Extensions */,
 				BF2CCDDB26A7E5B000DCF60B /* MVVM with Manual Bindings */,
 				BFC4ACF526A30C5700796FF9 /* Assets.xcassets */,
@@ -172,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				BFC4AD0326A30C5700796FF9 /* MVVMTests.swift */,
+				BF2CCDEB26A81DED00DCF60B /* BookSearchTestViewModel.swift */,
 			);
 			path = MVVMTests;
 			sourceTree = "<group>";
@@ -314,12 +366,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2CCDEF26A81E7800DCF60B /* BookSearchView.swift in Sources */,
+				BF2CCDE326A7E99400DCF60B /* BookSearchHomeViewController.swift in Sources */,
 				BFC4AD1B26A315EE00796FF9 /* User.swift in Sources */,
 				BFC4ACF126A30C5600796FF9 /* HomeViewController.swift in Sources */,
 				BFC4AD1F26A3205900796FF9 /* Bindable.swift in Sources */,
 				BFBE3A2226A3EC08001B348B /* UsernameViewModel.swift in Sources */,
 				BFBE3A2426A3EC7B001B348B /* UIView+Create+Extensions.swift in Sources */,
 				BFC4AD1D26A316B500796FF9 /* UsernameView.swift in Sources */,
+				BF2CCDE826A7E9C200DCF60B /* BooksSearchViewModel.swift in Sources */,
 				BFC4ACED26A30C5600796FF9 /* AppDelegate.swift in Sources */,
 				BFC4ACEF26A30C5600796FF9 /* SceneDelegate.swift in Sources */,
 			);
@@ -330,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFC4AD0426A30C5700796FF9 /* MVVMTests.swift in Sources */,
+				BF2CCDEC26A81DED00DCF60B /* BookSearchTestViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

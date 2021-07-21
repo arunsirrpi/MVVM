@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private var homeViewController: HomeViewController? = nil
+    private var homeViewController: BookSearchHomeViewController? = nil
 
     func scene(_ scene: UIScene,
                willConnectTo session:
@@ -18,9 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                UIScene.ConnectionOptions)
     {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        homeViewController = HomeViewController(
-            withViewModel: HomeViewModel(title: "Home")
-        )
+        homeViewController = BookSearchHomeViewController(nibName: nil, bundle: nil)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = homeViewController
         window?.makeKeyAndVisible()
