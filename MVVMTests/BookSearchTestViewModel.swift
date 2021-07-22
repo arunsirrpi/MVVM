@@ -17,7 +17,7 @@ class BookSearchTestViewModel: XCTestCase {
         
         /// setup
         let sut = BookSearchViewModel(
-            withModel: BookSearchQuery()
+            withModel: BookSearchModel()
         ) { _ in
           XCTFail("Should never ever be called")
         }
@@ -42,7 +42,7 @@ class BookSearchTestViewModel: XCTestCase {
         
         /// setup
         let sut = BookSearchViewModel(
-            withModel: BookSearchQuery()
+            withModel: BookSearchModel()
         ) { actualQuery in
           XCTAssertEqual(expected_search_query, actualQuery)
         }

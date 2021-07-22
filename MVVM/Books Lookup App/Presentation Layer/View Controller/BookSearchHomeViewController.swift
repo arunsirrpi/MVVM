@@ -7,13 +7,17 @@
 
 import UIKit
 
-class BookSearchHomeViewController: UIViewController {
+final class BookSearchHomeViewController: UIViewController {
     
     override func loadView() {
         let bookSearchViewModel = BookSearchViewModel(
-            withModel: BookSearchQuery()) { newQuery in
-                /// Tell the model to get me the book
-            }
+            withModel: BookSearchModel()
+        )
         view = BookSearchView(withViewModel: bookSearchViewModel)
     }
 }
+
+struct LoadingViewModel {
+    
+}
+

@@ -8,6 +8,28 @@
 import Foundation
 import UIKit
 
+struct BookInfo {
+    let title: String
+    let isbn: String
+}
+
+/// Data Access Layer
+struct BookInfoLoader {
+    typealias AsyncCallback = (BookInfo) -> Void
+    func load(isbn: String, _ callback: @escaping AsyncCallback) {
+        let popTime = DispatchTime.now() + DispatchTimeInterval.seconds(10)
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: popTime) {
+            let bookInfo = BookInfo(
+                title: "Amazing Book on MVVM",
+                isbn: isbn
+            )
+            DispatchQueue.main.async {
+                callback(bookInfo)
+            }
+        }
+    }
+}
+/// Simple validator
 struct ISBNValidator {
     private let validCharacterSet = CharacterSet.decimalDigits
     func isValid(ISBN: String) -> Bool {
@@ -16,8 +38,20 @@ struct ISBNValidator {
     }
 }
 
-struct BookSearchQuery {
+/// BookQuery
+final class BookSearchModel {
+    enum SearchError: Error {
+        case notFound
+        case ISBNNotSetCorrectly
+    }
     
+    /// Publication
+    typealias OnNextBook = (BookInfo?) -> Void
+    var onNextBook: PublishBind<Result<BookInfo, SearchError>>? = nil
+    
+    /// Data Access layer
+    private let bookInfoLoader = BookInfoLoader()
+    /// Bussiness logic on validation
     private let isbnValidator = ISBNValidator()
     private(set) var ISBN: String = ""
     
@@ -25,7 +59,7 @@ struct BookSearchQuery {
         return !ISBN.isEmpty
     }
     
-    mutating func updateISBN(toPossibleISBN possibleISBN:String) -> Bool {
+    func updateISBN(toPossibleISBN possibleISBN:String) -> Bool {
         let digitCount = possibleISBN.count
         guard
             isbnValidator.isValid(ISBN: possibleISBN),
@@ -36,6 +70,17 @@ struct BookSearchQuery {
         
         ISBN = possibleISBN
         return true
+    }
+    
+    func searchBook() {
+        guard hasValidISBN else {
+            onNextBook?(.failure(.ISBNNotSetCorrectly))
+            return
+        }
+        
+        bookInfoLoader.load(isbn: ISBN) { bookInfo in
+            onNextBook?(.success(bookInfo))
+        }
     }
 }
 
@@ -50,16 +95,18 @@ final class BookSearchViewModel {
     typealias SearchQueryBackgroundColorChanged = (UIColor) -> Void
     var onNextSearchQueryBackgroundColorChanged: PublishBind<UIColor>? = nil
     
-    typealias PerformSearch = (String) -> Void
-    let onPerformSearch: PerformSearch
+    typealias SearchingStateChanged = (Bool) -> Void
+    let onPerformSearch: SearchingStateChanged
     
     /// Backing Model
-    private var model: BookSearchQuery
+    private var model: BookSearchModel
     
     /// View State Representation
     private(set) var isSearchButtonEnabled: Bool    = false
     private(set) var searchBackgroundColor: UIColor = .green
     private(set) var searchQueryText:String
+    private(set) var isSearching: Bool              = false
+    private(set) var searchResult: String           = ""
     
     let viewbackgrounColour = UIColor.white
     
@@ -68,13 +115,10 @@ final class BookSearchViewModel {
     let searchButtonDisabledTextColor   = UIColor.gray
     let searchButtonBackgroundColor     = UIColor.black
     
-    init(
-        withModel model:BookSearchQuery,
-        andOnPerformSearchBinding performSearchBinding: @escaping PerformSearch
-    ) {
+    init(withModel model:BookSearchModel)
+    {
         self.model = model
         searchQueryText = model.ISBN
-        onPerformSearch = performSearchBinding
     }
 }
 
@@ -90,6 +134,6 @@ extension BookSearchViewModel {
     
     func onSearchButtonPressed() {
         guard model.hasValidISBN else { return }
-        onPerformSearch(model.ISBN)
+        /// TODO: Change the next set of things
     }
 }
